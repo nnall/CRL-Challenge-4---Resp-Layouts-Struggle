@@ -1,0 +1,214 @@
+*, *::before, *::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+/* ........................ STYLES ....................  */
+:root{
+    --tan: #F3EED9;
+    --brown: #824936;
+    --blackish: #222C2A;
+}
+
+
+/* 
+font-family: 'Playfair Display', serif;
+font-family: 'Roboto', sans-serif;
+*/
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2{
+    font-family: 'Playfair Display', serif;
+}
+
+h1 + h1{
+    color:var(--brown)
+}
+
+p{
+    line-height:1.75rem;
+}
+
+/* ..............CONTAINERS............. */
+
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container__header{
+    background-color: var(--tan);
+}
+
+/*    .container__1 is no background-color     */
+
+
+.container__2{
+    background-color: var(--blackish)
+}
+
+.container__3{
+    background-color: var(--brown);
+}
+
+
+/* ............. SECTIONS ............... */
+
+
+section{
+    padding:4em 6em; 
+    max-width:1128px;
+    /* border: 2px solid red; */
+}
+
+.center{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+}
+
+/*  ........... HEADER SECTION ..........*/
+
+.header__section {
+    width: 1128px;   
+    min-height:660px; 
+    
+}
+
+.subtitle{
+    color:var(--blackish);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    margin-bottom:2em;
+
+}
+
+
+h1{
+    text-align:center;
+    color:var(--brown);
+    font-size: 3em;
+    max-width:12em;
+    line-height: 1em;;
+}
+
+h2{
+    margin-bottom:1.5em;
+}
+
+/* ......... SECTION 1 .......... */
+
+.section1{
+    padding:6em 6em; 
+}
+
+.section1__title{
+    color:var(--brown);
+    margin-bottom:2em;
+}
+
+
+.section1__text{
+    color:var(--blackish);
+}
+
+
+/*  .............. SECTION 2, 3 ........... */
+
+.section1__text, .section2, .section3{
+    display:flex;
+    gap:3em;
+}
+
+.section2, .section3{
+    color:white;
+}
+
+.section2__title, .section3__title{
+    color: var(--tan);
+}
+
+.col{
+    flex-basis:50%;
+}
+
+.col__img{
+    display:flex;
+    align-items:center; /* mking it center vertically*/
+}
+
+img{
+    min-width:100%;
+    max-width:100%;
+    
+}
+
+
+
+/* ...................   MEDIA QUERY   ................... */
+
+
+@media(max-width:900px){
+
+/* <.col__img> (the <img>'s parent) is still display:flex, already set to vertical centering child img (line 146) */
+
+    .section1__text {
+        display:block;
+    }
+    /* ... Make Section 2, 3 Flex row containers into Flex Column .....*/
+    /* ... NOTE: align-items now means horizontal centering ..... */
+
+    .section2{
+        flex-direction: column;
+    }
+
+    .section3{
+        flex-direction:column-reverse;
+    }
+
+
+/* 
+I was going to center horizontally from the ITEM level here, in this Flex column, so center vertically from the container, and then have the items center themselves horizontally?
+*/
+
+/* Targeting FLEX CHILDREN (the <img>'s) here, by their classname */
+    .col__img{
+       max-width:100%;  /* <-- <div> width should be, at most, 100% of its original width (... that it had as a row item?) */
+       margin: 0 auto; /*<--- horizontal centering at flex-item level (vertixally centered by flex parent (line 146)*/
+       border: 3px solid blue;
+        
+    }
+
+}
+
+/* 
+.col__img is a <div> containing an <img>
+
+If max-width percentage is "as a percentage of the containing block's width", then why here does setting .col__img's max-width mean for it to refer to ITSELF..? 
+
+SHouldn't max-width:100% mean that .col__img ought to be 100% as wide as its parent .sectino2, .section3?
+
+Instead (see blue border), 100% is making it only as wide as its child <img> element's width, but less wide than the .section2, .section3 parent width
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
